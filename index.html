@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+    /*navigation*/
+        .navi {
+            display: flex;
+            align-items: center;
+            height: 100px;
+        }
+        .navi nav {
+            margin-left: 700px;
+        }
+        .navi img {
+            height: 70px;
+        }
+        .navi a {
+            text-decoration: none;
+            color: black;
+            margin-right: 20px;
+            font-size: 1.2em;
+            height: 100px;
+            padding: 10px;
+        }
+        .navi a:hover {
+            border-bottom: 3px solid rgb(224, 160, 75);
+        }
+        .navi p {
+            font-size: 1.5em;
+        }
+    /*banner*/
+       
+    /*note*/    
+        .ttl { 
+            width: 700px;
+            text-align: center;
+            color: rgb(0, 0, 0);
+            font-size: 1.2em;
+            margin: auto;
+        }
+        .ttl h1 {
+            font-size: 4em;
+        }
+        .n {
+            display: flex;
+            justify-content: center;
+        }
+        .note {
+            font-size: 1.2em;
+            width: 300px;
+            text-align: center;
+            margin: 30px;
+            padding: 5px;
+            border-radius: 20px;
+            border:3px solid rgb(128, 65, 128);
+            background-color: rgb(255, 255, 255);
+            transition: .5s ease-in-out;
+        }
+        .note img {
+            width: 100px;
+            transition: 0.5s ease-in-out;
+        }
+        .note:hover {
+            box-shadow: 0px 8px 12px rgb(128, 65, 128);
+            transform: translateY(-5px);
+        }
+        .note:hover img {
+            transform: scale(1.5);
+        }
+    
+    /*assesment*/
+        .h{
+            display: none;
+        }
+        .next:disabled{
+            width: 400px;
+            height: 100px;
+            border-radius: 50px;
+            font-size: 2em;
+            color: white;
+            border: 3px solid rgb(128, 65, 128, .25);
+            background-color:rgb(128, 65, 128, .25);
+            display: block; 
+            margin: 20px auto;
+        }
+        .next:enabled{
+            width: 400px;
+            height: 100px;
+            border-radius: 50px;
+            font-size: 2em;
+            color: white;
+            border: 3px solid rgb(128, 65, 128);
+            background-color:rgb(128, 65, 128);
+            display: block; 
+            margin: 20px auto;
+            cursor: pointer;
+            transition: .3s ease-in-out;
+            
+        }
+        .next:enabled:hover{
+            color: rgb(128, 65, 128);
+            background-color:white;
+            box-shadow: 0px 8px 12px rgb(128, 65, 128);
+            transform: translateY(-5px);
+        }
+    /*filter*/
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 10px;
+            margin-bottom: 20px;
+            padding:5px;
+            border-radius: 10px;
+            border: 3px solid rgb(128, 65, 128);
+        }
+        .grid-container label {
+            display: flex;
+            align-items: center;
+            font-size: 1em;
+            gap: 6px;
+            height: 120px;
+            border-radius: 20px;
+            transition: .3s ease-in-out;
+            border: 3px solid white;
+            cursor: pointer;
+        }
+        .grid-container label:hover {
+            background-color:rgb(128, 65, 128, .25);
+            color:rgb(128, 65, 128);
+        }
+        .grid-container label:has(input[type="checkbox"]:checked) {
+            border: 3px solid rgb(128, 65, 128);
+            box-shadow: 2px 5px 10px rgb(81, 85, 81);
+            color:rgb(128, 65, 128);
+        }
+        .error{
+            color: red;
+            margin: 20px;
+        }
+    /*assessemnt*/
+        .port{
+            border: 3px solid rgb(128, 65, 128);
+            border-radius: 50px;
+            display:none;
+            width: 70%;
+            margin:  auto;
+        }
+        .questionBox{
+            width: 70%;
+            margin: 80px auto 80px auto;
+            text-align: center;
+            font-size: 2em;
+            background: radial-gradient(circle, rgb(128, 65, 128, .25) 0%, rgba(255, 255, 255, 0) 100%);
+            border-radius: 20px;
+            display: none;
+
+        }
+        .answerBox{
+            position: relative;
+            width: 90%;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 30px auto;
+        }
+        .c1{
+            position: absolute;
+            left: 0px;
+            height: 100%;
+            width: 20%;
+            color: rgb(128, 65, 128);
+            display:flex;
+            align-items: center; 
+            justify-content: center;
+        }
+        .c2{
+            position: absolute;
+            right: 0;
+            height: 100%;
+            width: 20%;
+            color:rgb(128, 65, 128);
+            display:flex;
+            align-items: center; 
+            justify-content: center;
+        }
+        .rate{
+            width: 60%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .rate button{
+            margin: auto 10px auto 10px;
+            border-radius: 50%;
+            border:3px solid rgb(128, 65, 128);
+            transition: .3s ease-in-out;
+        }
+        .rate button:hover{
+             background-color: rgb(128, 65, 128);
+        }
+        .p3, .p-3{
+            width: 20%;
+            height: 70px;
+        }
+        .p2, .p-2{
+            width: 15%;
+            height: 55px;
+        }
+        .p1, .p-1{
+            width: 10%;
+            height: 40px;
+        }
+        .p0{
+            width: 7%;
+            height: 30px;
+        }
+        .blurred {
+            filter: blur(4px);
+            pointer-events: none;
+            opacity: 0.9;
+        }
+        .clicked {
+            background-color:rgb(128, 65, 128) !important;
+            border:none;
+        }
+    /*AI interpretation*/
+        .responseDiv{
+            border:3px solid rgb(128, 65, 128);
+            width: 70%;
+            margin: 30px auto 30px auto;
+            padding: 70px;
+            display: none;
+            border-radius: 50px;
+            background-color:  rgba(192, 127, 192, 0.25);
+        }
+    </style>
+</head>
+<body>
+<!--navigation
+    <div class="navi">
+        <img src="img/profile-icon.png">
+        <p>PERFIT</p>
+
+        <a href="#"></a>
+        <a href="#">ministry roles</a>
+        
+    </div>
+-->
+<!--banner-->
+    <div class="banner"></div>
+<!--title-->
+    <div class="ttl">
+        <h1>finding the perfect fit</h1>
+        <p>PerfectFit helps you discover where your strengths, passions, and purpose align—so you can thrive in the role made just for you.</p>
+    </div>
+<!--note-->
+    <div class="n">
+        <div class="note">
+            <img src="img/icn-honesty.png"><!--honety icon-->
+            <h3>Be Honest</h3>
+            <p>Answer honestly discover your strengths.</p>
+        </div>
+        <div class="note">
+            <img src="img/icn-find.png"><!--magnifying glass-->
+            <h3>View Your Inner Self</h3>
+            <p>Learn your unique strengths and preferences.</p>
+        </div>
+        <div class="note">
+            <img src="img/icn-grow.png"><!--tree growing-->
+            <h3>Unlock Your Potential</h3>
+            <p>Grow into the person you’re meant to be.</p>
+        </div>
+    </div>
+<!--start assessment-->
+    <button class="next" id="start" onclick="displayFilter()">START ASSESSMENT</button>
+<!--filter box-->
+    <div class="questionBox move-up" id="filter" style="background-color:white; background:none;">
+        <p>Select 5 ministries you're interested in:</p>
+        <div class="grid-container" id="selectedMinistry">
+            <label><input type="checkbox" name="ministry" value="0"> Music Ministry</label>
+            <label><input type="checkbox" name="ministry" value="1"> Ushering Ministry</label>
+            <label><input type="checkbox" name="ministry" value="2"> Martial Ministry</label>
+            <label><input type="checkbox" name="ministry" value="3"> Admin/Admin Support</label>
+            <label><input type="checkbox" name="ministry" value="4"> Tambourine Dancers</label>
+            <label><input type="checkbox" name="ministry" value="5"> Youth Ministry</label>
+            <label><input type="checkbox" name="ministry" value="6"> Young Pro Ministry</label>
+            <label><input type="checkbox" name="ministry" value="7"> Prayer Ministry</label>
+            <label><input type="checkbox" name="ministry" value="8"> Evangelism Ministry</label>
+            <label><input type="checkbox" name="ministry" value="9"> Preaching Ministry</label>
+            <label><input type="checkbox" name="ministry" value="10"> Follow-up Ministry</label>
+            <label><input type="checkbox" name="ministry" value="11"> Discipleship Ministry</label>
+            <label><input type="checkbox" name="ministry" value="12"> Mercy and Caring Ministry</label>
+            <label><input type="checkbox" name="ministry" value="13"> Multimedia Ministry</label>
+            <label><input type="checkbox" name="ministry" value="14"> Mentoring Ministry</label>
+            <label><input type="checkbox" name="ministry" value="15"> Intercessor Ministry</label>
+            <label><input type="checkbox" name="ministry" value="16"> Technical/Stage Management Ministry</label>
+            <label><input type="checkbox" name="ministry" value="17"> Production Design Ministry</label>
+        </div>
+        <div class="error" id="error-message" style="display: none;">Please select 5 ministries.</div>
+        <button class="next" id="submitBtn" onclick="displayQuestion()" style="font-size: 1em;" disabled>NEXT</button>
+    </div>
+<!--assessment-->
+    <div class="port" id="QPort">
+        <!--question here-->
+        <button class="next" id="nextPhase" onclick="displayQuestion()" disabled>NEXT</button>
+    </div>
+    <!--template-->
+    <template id="questionTemp">
+        <div class="questionBox move-up">
+            <p class="questionText">//test question//</p>
+            <div class="answerBox">
+                <p class="c1">Agree</p>
+                <div class="rate" id="Ans">
+                    <button class="p3" value=3></button>
+                    <button class="p2" value=2></button>
+                    <button class="p1" value=1></button>
+                    <button class="p0" value=0></button>
+                    <button class="p-1" value=-1></button>
+                    <button class="p-2" value=-2></button>
+                    <button class="p-3" value=-3></button>
+                </div>
+                <p class="c2">Disagree</p>
+            </div>
+        </div>
+    </template>
+
+<!--ai response-->
+
+<div class="responseDiv" id="responseDiv">
+    <h1 style="color:rgb(128, 65, 128);text-align: center;">AI INTERPRETATION</h1>
+    <div id="thinking" style="display:none; font-weight: bold; font-size: 1.2em;">Thinking<span id="dots">.</span></div>
+</div>
+    <!--
+<footer>
+    <hr><br><br>footer to<br><br><hr>
+</footer>
+-->
+<script>
+//display filter
+/*
+    function displayFilter() {
+        document.getElementById("filter").style.display = "block";
+        document.getElementById("start").style.display = "none";
+        const form = document.getElementById('selectedMinistry');
+        const checkboxes = form.querySelectorAll('input[type="checkbox"]');
+        const errorMessage = document.getElementById('error-message');
+        const submitBtn = document.getElementById('submitBtn');
+        checkboxes.forEach(cb => {
+            cb.addEventListener('change', () => {
+                const selected = Array.from(checkboxes).filter(i => i.checked);
+                // Limit to exactly 5
+                if (selected.length > 5) {
+                    cb.checked = false;
+                    errorMessage.style.display = 'block';
+                    setTimeout(() => errorMessage.style.display = 'none', 3000);
+                    return;
+                }
+                // Enable or disable button
+                submitBtn.disabled = selected.length !== 5;
+                // Store selected values globally
+                window.selectedMinistries = selected.map(cb => cb.value);
+                console.log(window.selectedMinistries);
+            });
+        });
+    }
+*/
+//scores
+    let phaseScores = [0, 0, 0, 0, 0];
+    let currentPhase = 1;
+//display question
+    function displayQuestion() {
+        document.getElementById("filter").style.display = "none";
+
+        // Clear previous questions
+        const qPort = document.getElementById("QPort");
+        qPort.querySelectorAll(".questionBox").forEach(el => el.remove());
+
+        //track current phase
+        let phase = currentPhase*8-8;
+        makeQuestion(phase);
+        document.getElementById('nextPhase').disabled = true;
+
+        let opemNext = 0;//activate next btn
+        document.querySelectorAll('.questionBox button').forEach(button => {
+            button.addEventListener('click', () => {
+                button.classList.add('clicked');
+                // Blur the questionBox container
+                const questionBox = button.closest('.questionBox');
+                questionBox.style.pointerEvents = 'none';
+                questionBox.style.opacity = '0.8';
+                questionBox.style.filter = 'blur(2px)'; 
+                // Find the next question box
+                const nextBox = questionBox.nextElementSibling;
+                if (nextBox && nextBox.classList.contains('questionBox')) {
+                    // Unblur the next box
+                    nextBox.style.pointerEvents = 'auto';
+                    nextBox.style.opacity = '1';
+                    nextBox.style.filter = 'none';
+
+                    // Smooth scroll to it
+                    nextBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+                opemNext++;
+                phaseScores[currentPhase-1] += parseInt(button.value);
+                if(opemNext === 8){
+                    document.getElementById('nextPhase').disabled = false;
+                    currentPhase++;
+    
+                    //change button funtion to submit
+                    if(currentPhase==6){
+                        document.getElementById("nextPhase").setAttribute("onclick", "interpret()");
+                    }
+                }
+            });
+        });
+    }
+
+    function makeQuestion(phase){
+        const ministryQuestions = [
+            [
+                "I feel confident singing or playing an instrument in front of others.",
+                "I enjoy using music as a form of worship and expression.",
+                "I can easily memorize melodies and harmonies.",
+                "I find joy in helping create a meaningful worship atmosphere.",
+                "I am willing to dedicate time to rehearsals and performances.",
+                "I believe music can deeply touch and minister to people’s hearts.",
+                "I am comfortable collaborating with others musically.",
+                "I can lead or support musical worship without distractions."
+            ],
+            [
+                "I enjoy welcoming and assisting people during events or services.",
+                "I am attentive to the needs of others.",
+                "I can remain calm and composed in crowded or busy settings.",
+                "I take pride in creating a warm and orderly environment.",
+                "I’m comfortable giving directions or instructions to others.",
+                "I notice small details that make people feel cared for.",
+                "I enjoy serving behind the scenes to support others.",
+                "I remain respectful and courteous under pressure."
+            ],
+            [
+                "I have physical training or martial arts experience.",
+                "I value discipline, control, and mental focus.",
+                "I enjoy performing in a way that conveys strength and meaning.",
+                "I can work well as part of a synchronized group.",
+                "I am willing to train and improve physical techniques.",
+                "I enjoy activities that require coordination and timing.",
+                "I am interested in using martial arts as a form of worship.",
+                "I can express faith and values through movement and discipline."
+            ],
+            [
+                "I am organized and efficient with paperwork or tasks.",
+                "I enjoy planning, scheduling, and managing information.",
+                "I can handle multiple responsibilities and deadlines.",
+                "I find satisfaction in keeping things orderly and running smoothly.",
+                "I’m comfortable working with spreadsheets, forms, and databases.",
+                "I am good at communicating clearly through email or writing.",
+                "I enjoy supporting others through administrative work.",
+                "I pay attention to details and accuracy in tasks."
+            ],
+            [
+                "I enjoy dancing or expressing myself through movement.",
+                "I am comfortable performing in front of an audience.",
+                "I believe dancing can be a powerful form of worship.",
+                "I have or am willing to develop rhythm and coordination.",
+                "I enjoy practicing and improving choreographed routines.",
+                "I can express emotion and meaning through dance.",
+                "I feel a sense of freedom and joy when dancing.",
+                "I enjoy dancing as part of a team or group."
+            ],
+            [
+                "I relate well with teenagers and young people.",
+                "I am passionate about guiding and mentoring youth.",
+                "I enjoy helping others grow in their faith.",
+                "I am comfortable speaking or sharing in small group settings.",
+                "I am patient, approachable, and a good listener.",
+                "I understand the challenges young people face today.",
+                "I want to be a positive role model for youth.",
+                "I am energized by working with the next generation."
+            ],
+            [
+                "I relate well with young professionals or working adults.",
+                "I enjoy discussing faith and life challenges in adult contexts.",
+                "I want to help others grow in their spiritual walk.",
+                "I enjoy organizing events or fellowships for adults.",
+                "I’m passionate about helping peers find purpose and direction.",
+                "I like balancing professionalism with faith expression.",
+                "I want to contribute to a thriving faith-based adult community.",
+                "I enjoy being part of discussions on career, relationships, and purpose."
+            ],
+            [
+                "I believe in the power of prayer.",
+                "I feel called to intercede for others regularly.",
+                "I find peace and focus during prayer.",
+                "I am willing to pray with or for someone anytime.",
+                "I feel spiritual strength when I pray.",
+                "I enjoy setting aside quiet time for prayer.",
+                "I feel deeply connected to God through prayer.",
+                "I believe consistent prayer transforms situations."
+            ],
+            [
+                "I enjoy sharing my faith with others.",
+                "I am comfortable talking to strangers about spiritual matters.",
+                "I believe everyone deserves to hear the gospel.",
+                "I find joy in seeing others come to know Christ.",
+                "I am bold and confident when needed.",
+                "I look for opportunities to start meaningful conversations.",
+                "I enjoy reaching out to communities or new people.",
+                "I am passionate about the Great Commission."
+            ],
+            [
+                "I enjoy studying and teaching God’s Word.",
+                "I am confident speaking in front of groups.",
+                "I feel called to share God’s message to others.",
+                "I can prepare and deliver structured messages.",
+                "I enjoy encouraging others through sermons or teachings.",
+                "I am willing to spend time in Bible study and reflection.",
+                "I can explain biblical truths in an engaging way.",
+                "I want to inspire others to live out their faith."
+            ],
+            [
+                "I care deeply about people’s spiritual journeys.",
+                "I enjoy checking in on and encouraging others.",
+                "I’m good at keeping in touch and following through.",
+                "I believe discipleship continues after salvation.",
+                "I want to ensure people feel connected and supported.",
+                "I enjoy sending messages or making calls to stay connected.",
+                "I notice when someone is absent or seems distant.",
+                "I feel responsible for helping others stay spiritually strong."
+            ],
+            [
+                "I want to help others grow in their faith.",
+                "I am passionate about one-on-one spiritual mentoring.",
+                "I am willing to invest time into someone’s spiritual development.",
+                "I enjoy guiding people through biblical principles.",
+                "I can listen well and give wise advice.",
+                "I believe discipleship is crucial for church growth.",
+                "I am patient and encouraging in teaching others.",
+                "I desire to walk with someone in their Christian journey."
+            ],
+            [
+                "I feel compassion for those in need.",
+                "I want to care for the sick, elderly, or hurting.",
+                "I enjoy helping people through difficult times.",
+                "I am a good listener and comforter.",
+                "I feel joy when I can help someone feel loved.",
+                "I am willing to visit, pray for, or support people in crisis.",
+                "I value service through kindness and generosity.",
+                "I want to show God’s love through acts of compassion."
+            ],
+            [
+                "I enjoy working with technology and media tools.",
+                "I like creating graphics, videos, or presentations.",
+                "I can learn new software or equipment quickly.",
+                "I enjoy capturing moments through photo or video.",
+                "I’m interested in enhancing worship through multimedia.",
+                "I want to use creativity to communicate messages.",
+                "I can work well behind the scenes during services.",
+                "I enjoy editing or designing digital content."
+            ],
+            [
+                "I want to invest in someone’s personal and spiritual growth.",
+                "I have life experiences that can benefit others.",
+                "I enjoy building long-term relationships with others.",
+                "I am a patient and encouraging guide.",
+                "I want to help others succeed in life and faith.",
+                "I feel fulfilled when I see someone grow and mature.",
+                "I am comfortable giving advice and support.",
+                "I can commit time and energy to mentor someone."
+            ],
+            [
+                "I feel called to pray regularly for others.",
+                "I often sense spiritual burdens that lead me to pray.",
+                "I enjoy quiet time devoted to intercession.",
+                "I am persistent in praying until things change.",
+                "I believe prayer can shift spiritual atmospheres.",
+                "I feel spiritually strong when interceding for others.",
+                "I prioritize prayer as a ministry.",
+                "I often receive impressions to pray for specific things."
+            ],
+            [
+                "I enjoy managing lights, sound, or stage setup.",
+                "I work well under pressure during live events.",
+                "I enjoy making sure everything runs smoothly behind the scenes.",
+                "I am detail-oriented and aware of timing.",
+                "I like coordinating people and resources.",
+                "I can troubleshoot equipment problems quickly.",
+                "I value order and precision in event execution.",
+                "I am dependable during rehearsals and services."
+            ],
+            [
+                "I enjoy creating visual designs or stage setups.",
+                "I have an eye for aesthetics and theme.",
+                "I enjoy working with props, costumes, or decorations.",
+                "I can bring abstract ideas into tangible visuals.",
+                "I enjoy planning and organizing creative elements.",
+                "I am willing to collaborate and take creative feedback.",
+                "I want to enhance the worship environment visually.",
+                "I enjoy designing or crafting creative projects."
+            ]
+        ];
+        // Compile questions based on picked ministries
+        const questions = window.selectedMinistries
+            .map(index => ministryQuestions[index])
+            .flat();
+
+        const qPort = document.getElementById("QPort");
+        const nextButton = document.getElementById("nextPhase");
+
+        let firstVisibleQuestion = null;
+
+        // Show only 8 questions for this phase
+        for (let i = phase; i < phase + 8; i++) {
+            const template = document.getElementById('questionTemp');
+            const clone = template.content.cloneNode(true);
+            const box = clone.querySelector('.questionBox');
+            clone.querySelector('.questionText').innerText = questions[i];
+
+            box.style.display = "block";
+            if (i !== phase) {
+                box.style.pointerEvents = 'none';
+                box.style.opacity = '0.8';
+                box.style.filter = 'blur(2px)';
+            } else {
+                firstVisibleQuestion = box; // capture the first fully active question
+            }
+
+            qPort.insertBefore(clone, nextButton);
+        }
+
+        qPort.style.display = "block";
+
+        // Center scroll to first active question
+        if (firstVisibleQuestion) {
+            firstVisibleQuestion.scrollIntoView({behavior: 'smooth', block: 'center'});
+        }
+    }
+
+//display interpertation
+    
+
+
+//ai interpretation
+    async function interpret() {
+        // Clear previous questions
+        document.getElementById("QPort").style.display = "none";
+        document.getElementById("responseDiv").style.display = "block";
+        startThinkingAnimation();
+
+        let ministryPicked = [
+            "Music Ministry", "Ushering Ministry", "Martial Ministry", "Admin/Admin Support",
+            "Tambourine Dancers", "Youth Ministry", "Young Pro Ministry", "Prayer Ministry",
+            "Evangelism Ministry", "Preaching Ministry", "Follow-up Ministry", "Discipleship Ministry",
+            "Mercy and Caring Ministry", "Multimedia Ministry", "Mentoring Ministry", "Intercessor Ministry",
+            "Technical/Stage Management Ministry", "Production Design Ministry"
+        ];
+        for (let i = 0; i < 5; i++) {
+            for (let j = i; j < 5; j++) {
+                
+                if (phaseScores[i] < phaseScores[j + 1]) {
+                    // Swap elements
+                    const temp = phaseScores[i];
+                    phaseScores[i] = phaseScores[j + 1];
+                    phaseScores[j + 1] = temp;
+
+                    const temp2 = window.selectedMinistries[i];
+                    window.selectedMinistries[i] = window.selectedMinistries[j + 1];
+                    window.selectedMinistries[j + 1] = temp2;
+                }
+            }
+        }
+        let message = `
+            You are an AI assistant for the PerfectFit church ministry personality test. 
+            A user has completed the test, and their scores are as follows (highest score means top 1):
+
+            top 1 [${ministryPicked[window.selectedMinistries[0]]}]: Score [${phaseScores[0]}]
+            top 2 [${ministryPicked[window.selectedMinistries[1]]}]: Score [${phaseScores[1]}]
+            top 3 [${ministryPicked[window.selectedMinistries[2]]}]: Score [${phaseScores[2]}]
+            top 4 [${ministryPicked[window.selectedMinistries[3]]}]: Score [${phaseScores[3]}]
+            top 5 [${ministryPicked[window.selectedMinistries[4]]}]: Score [${phaseScores[4]}]
+
+            find the top 1 and top 2 scoring ministry from the data above
+            follow the notes
+
+            Your task is to give interpretation, focusing on their divine calling and how the ministries align with their strengths and purpose. 
+            Include a spiritual connection between the top two ministries, emphasizing their complementary roles in the user's faith journey.
+
+            Output Format:
+            <h1 style="color:rgb(128, 65, 128);text-align: center;">AI INTERPRETATION</h1>
+
+            <h2 style="color:rgb(128, 65, 128);">Top 1 Identified Fit: [Ministry] (Score: [Score])</h2>//note: make this response 200 words minimum and 2 paragraphs minimum
+            Provide a brief explanation of why this ministry is the user's top fit. 
+            Highlight how this ministry aligns with their natural gifts, strengths, and passion. 
+            Explain that this fit is part of their divine calling, as though this ministry was made for them. 
+            Emphasize the alignment between their purpose and this ministry's mission. 
+
+            <h2 style="color:rgb(128, 65, 128);">Top 2 Identified Fit: [Ministry] (Score: [Score]</h2>//note: make this response 200 words minimum and 2 paragraphs minimum
+            Provide a brief explanation of why this ministry is the user's second-best fit. 
+            Focus on how it complements their spiritual strengths and calling. 
+            Again, explain that this ministry feels like a divine part of their journey, 
+            something that aligns with their unique gifts and purpose in life. 
+
+            <h2 style="color:rgb(128, 65, 128);">Spiritual Relationship Between [Ministry] and [Ministry]</h2>//note: make this response 200 words minimum and 2 paragraphs minimum
+            Explain how these two ministries are connected and complement each other in a spiritual sense. 
+            Focus on how their roles support the individual's growth in faith, build on themes like service, prayer, worship, or leadership, and help fulfill the greater mission of the church. 
+            Illustrate how the combination of these ministries enhances the user’s role in God's work. 
+            
+            <h2 style="color:rgb(128, 65, 128);">Growth Opportunities:</h2>//note: make this response 100 words minimum and 2 paragraphs minimum
+            Show how they can grow into their role. Include spiritual, emotional, or skill-based development suggestions. 
+            
+            <h2 style="color:rgb(128, 65, 128);">Compatibility with Team Dynamics:</h2>//note: make this response 100 words minimum and 2 paragraphs minimum
+            Give an insight like "You'd thrive best in teams that are..." (ex. collaborative, structured, spontaneous, etc.) 
+            Help them visualize what kind of team culture suits them. 
+            
+            <h2 style="color:rgb(128, 65, 128);">Ministry Pathway / Journey Map:</h2>//note: Put the path way in bullets
+            make a possible serving pathway, Help them think long-term, not just one-time serving.
+            example:
+            - start as an assisstant
+            - learn from your senior
+            - lead your juniors
+            - grow into a leader role. 
+            
+        `;
+
+        const response = await fetch('http://localhost:11434/api/generate', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                model: 'mistral', // Replace with your model
+                prompt: message,
+                stream: false
+            })
+        });
+
+        const data = await response.json();
+        // Display response in the div
+        stopThinkingAnimation();
+        document.getElementById("responseDiv").innerHTML = data.response.replace(/\n/g, '<br>');
+    }
+    //thinking loading animation
+        let thinkingInterval;
+        function startThinkingAnimation() {
+            const dots = document.getElementById("dots");
+            let dotCount = 1;
+            thinkingInterval = setInterval(() => {
+                dotCount = (dotCount % 3) + 1;
+                dots.textContent = ".".repeat(dotCount);
+            }, 500);
+            document.getElementById("thinking").style.display = "inline";
+        }
+
+        function stopThinkingAnimation() {
+            clearInterval(thinkingInterval);
+            document.getElementById("thinking").style.display = "none";
+        }
+</script>
+</body>
+</html>

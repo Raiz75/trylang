@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Looping Carousel</title>
+  <style>
+    .ministrySelection {
+      position: relative;
+      width: 90%;
+      margin: auto;
+      overflow: hidden;
+      border: 1px solid red;
+    }
+    .slides-container {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      width: 100%;
+    }
+
+    .slide {
+      flex: 0 0 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1vw;
+    }
+    .card {
+      width: 15%;
+      height: 17vw;
+      color:rgb(128, 65, 128);
+      background-color: white;
+      border:.2vw solid rgb(128, 65, 128);
+      margin:.3vw;
+      padding:.3vw;
+      border-radius: .5vw;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: .5s ease-in-out;
+    }
+    .card:hover{
+        box-shadow: 0px 1.2vw 1.2vw rgb(51, 26, 51);
+        transform: translateY(-5px);
+    }
+    .lBtn, .rBtn {
+      width: 3vw;
+      height: 3vw;
+      position: absolute;
+      top: 40%;
+      background-color: lightgray;
+      cursor: pointer;
+    }
+    .mTtl{
+      font-weight: bold;
+      font-size: 2em;
+    }
+    .card:hover{
+        box-shadow: 0px 1.2vw 1.2vw rgb(51, 26, 51);
+        transform: translateY(-5px);
+    }
+    .lBtn { left: 1%; }
+    .rBtn { right: 1%; }
+  </style>
+</head>
+<body>
+  <div class="ministrySelection">
+    <div class="slides-container" id="carousel">
+      <!-- Last slide (clone) -->
+      <div class="slide">
+        <div class="card">
+            <p class="mTtl">Music Ministry</p>
+            <p>Lead the congregation through worship.</p>
+        </div>
+        <div class="card">
+            <p class="mTtl">Music Ministry</p>
+            <p>Lead the congregation through worship.</p>
+        </div>
+        <div class="card">
+            <p class="mTtl">Music Ministry</p>
+            <p>Lead the congregation through worship.</p>
+        </div>
+        <div class="card">
+            <p class="mTtl">Music Ministry</p>
+            <p>Lead the congregation through worship.</p>
+        </div>
+        <div class="card">
+            <p class="mTtl">Music Ministry</p>
+            <p>Lead the congregation through worship.</p>
+        </div>
+      </div>
+
+      <!-- Slide 1 -->
+      <div class="slide">
+        <div class="card">
+            <p class="mTtl">Music Ministry</p>
+            <p>Lead the congregation through worship.</p>
+        </div>
+        <div class="card">
+            <p class="mTtl">Music Ministry</p>
+            <p>Lead the congregation through worship.</p>
+        </div>
+        <div class="card">
+            <p class="mTtl">Music Ministry</p>
+            <p>Lead the congregation through worship.</p>
+        </div>
+        <div class="card">
+            <p class="mTtl">Music Ministry</p>
+            <p>Lead the congregation through worship.</p>
+        </div>
+        <div class="card">
+            <p class="mTtl">Music Ministry</p>
+            <p>Lead the congregation through worship.</p>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="slide">
+        <div class="card">
+            <p class="mTtl">Music Ministry</p>
+            <p>Lead the congregation through worship.</p>
+        </div>
+        <div class="card">
+            <p class="mTtl">Music Ministry</p>
+            <p>Lead the congregation through worship.</p>
+        </div>
+        <div class="card">
+            <p class="mTtl">Music Ministry</p>
+            <p>Lead the congregation through worship.</p>
+        </div>
+        <div class="card">
+            <p class="mTtl">Music Ministry</p>
+            <p>Lead the congregation through worship.</p>
+        </div>
+        <div class="card">
+            <p class="mTtl">Music Ministry</p>
+            <p>Lead the congregation through worship.</p>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="slide">
+        <div class="card">
+            <p class="mTtl">Music Ministry</p>
+            <p>Lead the congregation through worship.</p>
+        </div>
+        <div class="card">
+            <p class="mTtl">Music Ministry</p>
+            <p>Lead the congregation through worship.</p>
+        </div>
+        <div class="card">
+            <p class="mTtl">Music Ministry</p>
+            <p>Lead the congregation through worship.</p>
+        </div>
+        <div class="card">
+            <p class="mTtl">Music Ministry</p>
+            <p>Lead the congregation through worship.</p>
+        </div>
+        <div class="card">
+            <p class="mTtl">Music Ministry</p>
+            <p>Lead the congregation through worship.</p>
+        </div>
+      </div>
+
+      <!-- Slide 4 -->
+      <div class="slide">
+        <div class="card">
+            <p class="mTtl">Music Ministry</p>
+            <p>Lead the congregation through worship.</p>
+        </div>
+        <div class="card">
+            <p class="mTtl">Music Ministry</p>
+            <p>Lead the congregation through worship.</p>
+        </div>
+        <div class="card">
+            <p class="mTtl">Music Ministry</p>
+            <p>Lead the congregation through worship.</p>
+        </div>
+        <div class="card">
+            <p class="mTtl">Music Ministry</p>
+            <p>Lead the congregation through worship.</p>
+        </div>
+        <div class="card">
+            <p class="mTtl">Music Ministry</p>
+            <p>Lead the congregation through worship.</p>
+        </div>
+      </div>
+
+      <!-- Slide 5 -->
+      <div class="slide">
+        <div class="card">
+            <p class="mTtl">Music Ministry</p>
+            <p>Lead the congregation through worship.</p>
+        </div>
+        <div class="card">
+            <p class="mTtl">Music Ministry</p>
+            <p>Lead the congregation through worship.</p>
+        </div>
+        <div class="card">
+            <p class="mTtl">Music Ministry</p>
+            <p>Lead the congregation through worship.</p>
+        </div>
+        <div class="card">
+            <p class="mTtl">Music Ministry</p>
+            <p>Lead the congregation through worship.</p>
+        </div>
+        <div class="card">
+            <p class="mTtl">Music Ministry</p>
+            <p>Lead the congregation through worship.</p>
+        </div>
+      </div>
+
+      <!-- Slide 6 -->
+      <div class="slide">
+        <div class="card">
+            <p class="mTtl">Music Ministry</p>
+            <p>Lead the congregation through worship.</p>
+        </div>
+        <div class="card">
+            <p class="mTtl">Music Ministry</p>
+            <p>Lead the congregation through worship.</p>
+        </div>
+        <div class="card">
+            <p class="mTtl">Music Ministry</p>
+            <p>Lead the congregation through worship.</p>
+        </div>
+        <div class="card">
+            <p class="mTtl">Music Ministry</p>
+            <p>Lead the congregation through worship.</p>
+        </div>
+        <div class="card">
+            <p class="mTtl">Music Ministry</p>
+            <p>Lead the congregation through worship.</p>
+        </div>
+      </div>
+
+      <!-- Slide 7 -->
+      <div class="slide">
+        <div class="card">
+            <p class="mTtl">Music Ministry</p>
+            <p>Lead the congregation through worship.</p>
+        </div>
+        <div class="card">
+            <p class="mTtl">Music Ministry</p>
+            <p>Lead the congregation through worship.</p>
+        </div>
+        <div class="card">
+            <p class="mTtl">Music Ministry</p>
+            <p>Lead the congregation through worship.</p>
+        </div>
+        <div class="card">
+            <p class="mTtl">Music Ministry</p>
+            <p>Lead the congregation through worship.</p>
+        </div>
+        <div class="card">
+            <p class="mTtl">Music Ministry</p>
+            <p>Lead the congregation through worship.</p>
+        </div>
+      </div>
+
+      <!-- First slide (clone) -->
+      <div class="slide">
+        <div class="card">
+            <p class="mTtl">Music Ministry</p>
+            <p>Lead the congregation through worship.</p>
+        </div>
+        <div class="card">
+            <p class="mTtl">Music Ministry</p>
+            <p>Lead the congregation through worship.</p>
+        </div>
+        <div class="card">
+            <p class="mTtl">Music Ministry</p>
+            <p>Lead the congregation through worship.</p>
+        </div>
+        <div class="card">
+            <p class="mTtl">Music Ministry</p>
+            <p>Lead the congregation through worship.</p>
+        </div>
+        <div class="card">
+            <p class="mTtl">Music Ministry</p>
+            <p>Lead the congregation through worship.</p>
+        </div>
+      </div>
+    </div>
+
+    <button class="lBtn" onclick="moveSlide('left')">goleft</button>
+    <button class="rBtn" onclick="moveSlide('right')">goright</button>
+  </div>
+
+  <script>
+    const carousel = document.getElementById('carousel');
+    const totalSlides = 7;
+    let currentIndex = 1;
+
+    // Set initial position
+    carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+    function moveSlide(direction) {
+      if (direction === 'right') {
+        currentIndex++;
+      } else {
+        currentIndex--;
+      }
+      carousel.style.transition = "transform 0.5s ease-in-out";
+      carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    carousel.addEventListener('transitionend', () => {
+      if (currentIndex === 0) {
+        carousel.style.transition = "none";
+        currentIndex = totalSlides;
+        carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+      }
+      if (currentIndex === totalSlides + 1) {
+        carousel.style.transition = "none";
+        currentIndex = 1;
+        carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+      }
+    });
+  </script>
+</body>
+</html>
